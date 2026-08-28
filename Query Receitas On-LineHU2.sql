@@ -7,9 +7,16 @@ USE receitasonline;
 CREATE TABLE Usuario (
 ID_usuario int unsigned not null auto_increment,
 login varchar(40) not null,
-senha varchar(40) not null,
+-- Hash bcrypt (password_hash/PASSWORD_DEFAULT) tem 60 caracteres; 255 dá folga
+-- para algoritmos futuros (ex: Argon2, que pode gerar hashes mais longos).
+senha varchar(255) not null,
 primary key(ID_usuario)
 );
+
+-- Caso a tabela já exista em produção com senha varchar(40), rode:
+-- ALTER TABLE Usuario MODIFY senha VARCHAR(255) NOT NULL;
+-- Isso é OBRIGATÓRIO antes de usar password_hash(), senão o hash bcrypt
+-- (60 caracteres) será truncado para 40 e nenhum login voltará a funcionar.
 
 
 CREATE TABLE Receitas (

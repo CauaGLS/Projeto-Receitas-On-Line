@@ -1,0 +1,29 @@
+# Variáveis de ambiente / segredos locais
+.env
+.env.*
+!.env.example
+
+# Configuração local específica de máquina
+config.local.php
+php/dbconex.local.php
+
+# Dependências e artefatos comuns em PHP
+/vendor/
+composer.lock
+composer.phar
+
+# Uploads e arquivos gerados em tempo de execução
+/uploads/
+/tmp/
+*.log
+
+# Arquivos de IDE / SO
+.idea/
+.vscode/
+*.suo
+Thumbs.db
+.DS_Store
+
+# Backups de banco de dados exportados localmente
+*.sql.bak
+*.sqlite
